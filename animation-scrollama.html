@@ -35,14 +35,14 @@
             .attr('width', 640)
             .attr('height', 640)
 
-          const days = myChart
+          const individualCharts = myChart
             .selectAll('rect')
             .data(data)
             .join('rect');
 
           const gridSize = 20, gap = 2;
 
-          days
+          individualCharts
             .attr('x', (d,i) => {
               return Math.floor(i%10)*(gridSize+ gap);
             })
@@ -54,7 +54,17 @@
             .style('fill','lightgrey')
           
           const showDays = function() {
-            days
+            individualCharts
+              .attr('width', 0)
+              .attr('height', 0)
+              .attr('x', (d,i) => {
+                return Math.floor(i%10)*(gridSize+ gap);
+              })
+              .attr('y', (d,i) => {
+                return Math.floor(i/10)*(gridSize+ gap);
+              })
+              .style('fill','lightgrey')
+
               .transition()
               .duration(2000)
               .attr('width', gridSize)
@@ -62,7 +72,15 @@
           }
 
           const showEmotions = function() {
-            days
+            individualCharts
+              .attr('x', (d,i) => {
+                return Math.floor(i%10)*(gridSize+ gap);
+              })
+              .attr('y', (d,i) => {
+                return Math.floor(i/10)*(gridSize+ gap);
+              })
+              .attr('width', gridSize)
+              .attr('height', gridSize)
               .transition()
               .duration(2000)
               .style('fill', d=> {
@@ -72,11 +90,23 @@
               })
           }
 
-          const changeShapes = function() {
-            days
+          const enlarge = function() {
+            individualCharts
+              .style('fill', d=> {
+                  if (d.Happiness == '1') {return 'black'}
+                  else if (d.Happiness == '2') {return 'lightgrey'}
+                  else {return 'gold'}
+              })
               .transition()
               .duration(2000)
-              .attr('rx', 10)
+              .attr('width', gridSize*2)
+              .attr('height',gridSize*2)
+              .attr('x', (d,i) => {
+                return Math.floor(i%10)*(gridSize*2 + gap);
+              })
+              .attr('y', (d,i) => {
+                return Math.floor(i/10)*(gridSize*2 + gap);
+              })
           }
 
 
@@ -129,8 +159,8 @@
               // 2. change color
               showEmotions()
             } else if (response.index == 2) {
-              // 3. change shape
-              changeShapes();
+              // 3. Make the chart bigger
+              enlarge()
             }
           }
 
@@ -163,13 +193,13 @@
   </head>
   <body>
     <h1>100 days of happiness</h1>
-    <p>My emotional ups-and-downs for the first 100 days of 2023</p>
+    <p>My emotional ups-and-downs for the first 100 days of 2024</p>
     <div id="scroll-content">
       <div id="my-svg-chart"></div>
       <div id="text">
         <div class="step">1. Make the charts appear</div>
         <div class="step">2. Change colors</div>
-        <div class="step">3. Change shape</div>
+        <div class="step">3. Make the chart bigger</div>
       </div>
     </div>
 

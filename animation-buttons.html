@@ -40,7 +40,7 @@
             .attr('height', 640)
 
           // Step 6. create SVG elements binded with data
-          const days = myChart
+          const individualCharts = myChart
             .selectAll('rect')
             .data(data)
             .join('rect');
@@ -48,7 +48,7 @@
           // Step 7. Position the SVG shapes at the right places
           const gridSize = 20, gap = 2;
 
-          days
+          individualCharts
             .attr('x', (d,i) => {
               return Math.floor(i%10)*(gridSize+ gap);
             })
@@ -59,11 +59,11 @@
             .attr('height', 0)
 
           // Step 8. Encode data onto the SVG shapes
-          days.style('fill','lightgrey')
+          individualCharts.style('fill','lightgrey')
           
 
           const greyToColor = function(){
-            days
+            individualCharts
               .transition()
               .duration(2000)
               .style('fill', d=> {
@@ -78,7 +78,7 @@
           }
 
           const colorToGrey = function(){
-            days
+            individualCharts
               .transition()
               .duration(2000)
               .style('fill','lightgrey')
@@ -94,7 +94,7 @@
 
 
           const showDays = function() {
-            days
+            individualCharts
               .transition()
               .duration(2000)
               .attr('width', gridSize)
@@ -102,7 +102,7 @@
           }
 
           const showEmotions = function() {
-            days
+            individualCharts
               .transition()
               .duration(2000)
               .style('fill', d=> {
@@ -124,7 +124,7 @@
   </head>
   <body>
     <h1>100 days of happiness</h1>
-    <p>My emotional ups-and-downs for the first 100 days of 2023</p>
+    <p>My emotional ups-and-downs for the first 100 days of 2024</p>
     
     <!-- Your button here -->
     <button id="btn">Animate!</button>

@@ -35,14 +35,14 @@
             .attr('width', 640)
             .attr('height', 640)
 
-          const days = myChart
+          const individualCharts = myChart
             .selectAll('rect')
             .data(data)
             .join('rect');
 
           const gridSize = 20, gap = 2;
 
-          days
+          individualCharts
             .attr('x', (d,i) => {
               return Math.floor(i%10)*(gridSize+ gap);
             })
@@ -52,7 +52,7 @@
             .attr('width', gridSize)
             .attr('height', gridSize)
           
-          days
+          individualCharts
             .style('fill', d=> {
                 if (d.Happiness == '1') {return 'black'}
                 else if (d.Happiness == '2') {return 'lightgrey'}
@@ -67,9 +67,9 @@
   </head>
   <body>
     <h1>100 days of happiness</h1>
-    <p>My emotional ups-and-downs for the first 100 days of 2023</p>
-    <div id="my-svg-chart"></div>
+    <p>My emotional ups-and-downs for the first 100 days of 2024</p>
     <!-- putting your buttons here -->
+    <div id="my-svg-chart"></div>
 
 
   </body>

@@ -1,25 +1,26 @@
 # Four ways of animating an SVG
 
-Let's make the SVG graphic we created during the [last class]() _move_.
+Let's make the SVG graphic we created during the [last class](https://github.com/zhoyoyo/lede24-svg-with-d3) _move_.
 
 We will do three things with four examples:
 
 1. Animate the SVG graphic without user interaction in two ways:
     - CSS animation
     - Javascript animation
-2. Add a button that triggers the animation
+2. Trigger animation with a button
 
-3. Trigger the animation with [Scrollama](https://github.com/russellsamora/scrollama)
+3. Trigger animation with [Scrollama](https://github.com/russellsamora/scrollama)
 
 #### What to do before we start:
 
 - Clone this repo to your computer (not sure how to? check it out [here](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)) or download the zip file to this repo using the green top button that says `CODE` 
-- Navigate to the folder where the files sit on your laptop, and load a local server. 
-    - You can use the following line if you use python. Once it says a local server is running, type in `localhost:8080` on your browser. You should see the content of the `index.html` page there!
+- Navigate to the folder where the files sit on your laptop, and load a local server. Not sure how? Try one of the following: 
+    - For all VS Code users, check out this plugin: [How to load changes spontanously on your local server with VS Code](https://www.freecodecamp.org/news/vscode-live-server-auto-refresh-browser/) 
+     - If you use Node or would like to learn (because it's so useful), check out [http-server](https://www.npmjs.com/package/http-server)
+     - You can use the following line if you use python. Once it says a local server is running, type in `localhost:8080` on your browser. You should see the content of the `index.html` page there!
         ```
         python3 -m http.server --cgi 8080
         ```
-    - If you use VS Code, check out this plugin: [How to load changes spontanously on your local server with VS Code](https://www.freecodecamp.org/news/vscode-live-server-auto-refresh-browser/) 
 
 
 
@@ -57,12 +58,12 @@ Add the following Javascript code after you set the x, y, width, and height attr
 
 
 ```
-// start with grey squares
-days.style('fill','lightgrey')
+// start with grey squares, change the "fill" value
+individualCharts.style('fill','lightgrey')
 
 const greyToColor = function(){
     
-    days
+    individualCharts
         .transition().duration(2000)
         .style('fill', d=> {
             if (d.Happiness == '1') {return 'black'}
@@ -75,7 +76,7 @@ const greyToColor = function(){
 
 const colorToGrey = function(){
 
-    days
+    individualCharts
         .transition()
         .duration(2000)
         .style('fill','lightgrey')
@@ -117,10 +118,6 @@ Next, we need to bind the function that starts the animation to the button in Ja
 
 // Create the Click event with D3: 
 d3.select('button#btn').on('click', greyToColor)
-
-// You can also do that with Javascript
-// document.getElementById("btn").addEventListener("click", greyToColor);
-
 ```
 
 We can further split the animations into two steps: 
@@ -178,7 +175,7 @@ First, let's set up our DOM elements to match the structure we typically see in 
     <div id="text"> <!-- Your text -->
         <div class="step">1. Make the charts appear</div>
         <div class="step">2. Change colors</div>
-        <div class="step">3. Change shape</div>
+        <div class="step">3. Make the chart bigger</div>
 
     </div> 
 </div>
@@ -241,8 +238,8 @@ function handleStepEnter(response) {
         // 2. change color
         showEmotions()
     } else if (response.index == 2) {
-        // 3. change shape
-        changeShapes();
+        // 3. Make the chart bigger
+        enlarge()
     }
 }
 
