@@ -1,0 +1,92 @@
+
+/* add your custom css here */
+body {
+    max-width: 640px;
+    margin: 0 auto;
+}
+#my-svg-chart, svg {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+}
+
+button {
+    cursor: pointer;
+    margin: 0 auto 10px auto;
+    display: inline-block;
+}
+
+
+/* THIS IS FROM SCROLLAMA */
+
+#scroll-content {
+    position: relative;
+    padding: 1rem;
+}
+
+#scroll-content #text {
+    position: relative;
+    padding: 0;
+    max-width: 20rem;
+    margin: 0 auto;
+}
+
+#scroll-content #my-svg-chart {
+    position: -webkit-sticky;
+    position: sticky;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    /* background-color:#f9f9f9; */
+    z-index: 0;
+}
+
+#scroll-content .step {
+    margin: 0 auto 2rem auto;
+    color: #fff;
+    background-color: rgba(0,0,0,0.05);
+    color: black;
+}
+
+
+/* 
+
+
+svg rect {
+    animation-name: easeIn;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+body h1 {
+    animation-name: easeIn;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+
+}
+
+
+@keyframes easeIn {
+    0% {
+        fill-opacity: 0;
+        fill: black;
+        color: red;
+    }
+
+    50% {
+        fill-opacity: 0.5;
+        fill: grey;
+        color: pink;
+    }
+
+    100% {
+        fill-opacity: 1;
+        fill:yellow;
+        color: yellow;
+    }
+} */
