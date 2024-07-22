@@ -18,37 +18,3 @@ button {
 
 
 /* THIS IS FROM SCROLLAMA */
-
-#scroll-content {
-    position: relative;
-    padding: 1rem;
-}
-
-#scroll-content #text {
-    position: relative;
-    padding: 0;
-    max-width: 20rem;
-    margin: 0 auto;
-}
-
-#scroll-content #my-svg-chart {
-    position: -webkit-sticky;
-    position: sticky;
-    left: 0;
-    width: 100%;
-    margin: 0;
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    /* background-color:#f9f9f9; */
-    z-index: 0;
-}
-
-#scroll-content .step {
-    margin: 0 auto 2rem auto;
-    color: #fff;
-    background-color: rgba(0,0,0,0.05);
-    color: black;
-}
-
-
